@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function (req, res){
-	res.sendFile(__dirname + "/index.html");
+	res.sendFile(__dirname + "/input.html");
 });
 
 var mysql = require('mysql');
