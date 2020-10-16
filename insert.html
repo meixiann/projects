@@ -1,8 +1,7 @@
 <html>
-<head>
-    <title> Input Data </title>
-</head>
+
     <body>
+    <h1> Insert form page</h1>
         <form action="/" method="POST">
             <fieldset>
             <label for="id">Staff ID: </label>
@@ -19,9 +18,19 @@
                 <br/>
                 <label for="pay">Pay: </label>
                 <input type="text" id="pay" name="pay" />
-                <br/>
+                <br/><br/>
                 <button type = "submit" value = "Submit">Submit</button>
+                
+                <input
+                action="action"
+                onclick="window.history.go(-1); return false;"
+                type="submit"
+                value="Cancel"
+                />
+                </br>
+                
             </fieldset>
         </form>
     </body>
 </html>
+
