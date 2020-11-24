@@ -1,6 +1,9 @@
 #Dockerfile
 FROM node:12
 
+RUN npm install
+RUN apt-get update
+RUN apt-get -y install vim 
 
 WORKDIR /app
 
@@ -16,11 +19,6 @@ COPY ["main.html", "./"]
 COPY ["query.js", "./"]
 COPY ["query.html", "./"]
 COPY ["package.json", "./"]
-
-
-RUN npm install
-RUN apt-get update
-RUN apt-get -y install vim 
 
 COPY . .
 
