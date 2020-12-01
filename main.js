@@ -11,19 +11,17 @@ app.use(bodyParser.urlencoded({
   res.sendFile(__dirname+'/main.html');
 });
 
-
-app.get('/query',function(req,res){
+app.get('/query',function(req,res, next){
   res.sendFile(__dirname+'/query.html'); 
-  require('./query')(app);
-});
-
+  require('./query')(app)
+ });
 
 //input script
-app.get('/input',function(req,res){
+app.get('/input',function(req,res, next){
   res.sendFile(__dirname+'/input.html'); 
-  require('./input')(app);
+  require('./input')(app)
+  
 });
-
 
 //insert script
 app.get('/insert',function(req,res){
@@ -31,13 +29,11 @@ app.get('/insert',function(req,res){
   require('./insert')(app);
 });
 
-
 //delete script
 app.get('/delete',function(req,res){
   res.sendFile(__dirname+'/delete.html');
   require('./delete')(app);
 });
-
 
 var server = app.listen(8888, function() {
 console.log('App listening on port 8888!')
