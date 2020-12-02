@@ -11,18 +11,18 @@ app.use(bodyParser.urlencoded({
 
 module.exports = function(app){
 
-app.post('/', function(req, res){
+app.post('/delete', function(req, res){
   var id = req.body.id;
 
- db.connect(function(err) {
-  if (err) throw err;
-  var sql = "DELETE FROM employees WHERE id = '" +  id + "'"
+ var sql = "DELETE FROM employees WHERE id = '" +  id + "'"
   db.query(sql, function (err, result) {
     if (err) throw err;
-    res.send("1 record deleted");
+    
+    var table  ='<h2>' + "1 record deleted" + '</h2>';
     console.log("1 record deleted");
-     res.end();
-  });
+    //table += '<a href= "http://192.168.80.140:8888">  Go back to home </a>'
+    res.send(table);
+    
   });
 })
 }
