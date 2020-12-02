@@ -20,11 +20,7 @@ app.post('/delete', function(req, res){
     
     var table  ='<h2>' + "1 record deleted" + '</h2>';
     console.log("1 record deleted");
-<<<<<<< HEAD
     //table += '<a href= "http://192.168.80.140:8888">  Go back to home </a>'
-=======
-    table += '<a href= "http://development.com:8888">  Go back to home </a>'
->>>>>>> 65edf9ead1c3635c7427c83f7465487434fc9237
     res.send(table);
     
   });
