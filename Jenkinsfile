@@ -1,4 +1,9 @@
 pipeline {
+	environment { 
+        	registry = "limmx/webapp" 
+	        registryCredential = 'docker' 
+        	dockerImage = '' 
+    }
 
   agent any
 
@@ -10,25 +15,23 @@ pipeline {
       }
     }
     
-      stage("Build image") {
-            steps {
-                script {
-                    webapp = docker.build("limmx/webapp:${env.BUILD_ID}")
+      stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = sh "docker build --network=host -t $REGISTRY:latest ." 
                 }
-            }
-        }
-    
-      stage("Push image") {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                            webapp.push("latest")
-                            webapp.push("${env.BUILD_ID}")
-                    }
-                }
-            }
+            } 
         }
 
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        sh "docker push $REGISTRY "
+                    }
+                } 
+            }
+        } 
     
     stage('Deploy App') {
       steps {
@@ -41,3 +44,4 @@ pipeline {
   }
 
 }
+
