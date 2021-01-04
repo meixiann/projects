@@ -1,0 +1,183 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: webapp-96d986db7-nhrhs
+  generateName: webapp-96d986db7-
+  namespace: default
+  uid: 695e00e1-c954-45ed-b973-a0222194457d
+  resourceVersion: '77983'
+  creationTimestamp: '2020-12-29T03:04:56Z'
+  labels:
+    k8s-app: webapp
+    pod-template-hash: 96d986db7
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: webapp-96d986db7
+      uid: 7ceb3f96-57f4-425c-88d6-e3470e5dd4c9
+      controller: true
+      blockOwnerDeletion: true
+  managedFields:
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-29T07:16:36Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:generateName': {}
+          'f:labels':
+            .: {}
+            'f:k8s-app': {}
+            'f:pod-template-hash': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"7ceb3f96-57f4-425c-88d6-e3470e5dd4c9"}':
+              .: {}
+              'f:apiVersion': {}
+              'f:blockOwnerDeletion': {}
+              'f:controller': {}
+              'f:kind': {}
+              'f:name': {}
+              'f:uid': {}
+        'f:spec':
+          'f:containers':
+            'k:{"name":"webapp"}':
+              .: {}
+              'f:image': {}
+              'f:imagePullPolicy': {}
+              'f:name': {}
+              'f:resources': {}
+              'f:securityContext':
+                .: {}
+                'f:privileged': {}
+              'f:terminationMessagePath': {}
+              'f:terminationMessagePolicy': {}
+          'f:dnsPolicy': {}
+          'f:enableServiceLinks': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:securityContext': {}
+          'f:terminationGracePeriodSeconds': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2021-01-04T01:02:39Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.244.1.5"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+spec:
+  volumes:
+    - name: default-token-wxhd7
+      secret:
+        secretName: default-token-wxhd7
+        defaultMode: 420
+  containers:
+    - name: webapp
+      image: limmx/webapp
+      resources: {}
+      volumeMounts:
+        - name: default-token-wxhd7
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: Always
+      securityContext:
+        privileged: false
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  dnsPolicy: ClusterFirst
+  serviceAccountName: default
+  serviceAccount: default
+  nodeName: worker-node
+  securityContext: {}
+  schedulerName: default-scheduler
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+  priority: 0
+  enableServiceLinks: true
+  preemptionPolicy: PreemptLowerPriority
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-12-29T03:04:56Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2021-01-04T01:02:39Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2021-01-04T01:02:39Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2020-12-29T03:04:56Z'
+  hostIP: 192.168.80.147
+  podIP: 10.244.1.5
+  podIPs:
+    - ip: 10.244.1.5
+  startTime: '2020-12-29T03:04:56Z'
+  containerStatuses:
+    - name: webapp
+      state:
+        running:
+          startedAt: '2021-01-04T01:02:38Z'
+      lastState:
+        terminated:
+          exitCode: 137
+          reason: Error
+          startedAt: '2020-12-31T00:56:04Z'
+          finishedAt: '2020-12-31T04:30:35Z'
+          containerID: >-
+            docker://506b8a214c69bb19df587e51ed8fc6bb9294d69c30fb92d1e1cb6c47f544ef9a
+      ready: true
+      restartCount: 8
+      image: 'limmx/webapp:latest'
+      imageID: >-
+        docker-pullable://limmx/webapp@sha256:50085838af77b825e9dd15537c127800d51209e9d63a7adbc13e2c84ceed7b73
+      containerID: >-
+        docker://967d27a9e3d100c25bb01fcdab55ff7bfdf7d2c169e16a516e3512407e86c163
+      started: true
+  qosClass: BestEffort
+
