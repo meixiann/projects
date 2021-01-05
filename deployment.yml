@@ -1,20 +1,5 @@
 ---
 apiVersion: apps/v1
-kind: Service
-metadata:
-  labels:
-    k8s-app: webapp
-  name: webapp-services
-  namespace: default
-spec:
-  ports:
-    - port: 8888
-      targetPort: 8888
-  selector:
-    k8s-app: webapp
-  type: NodePort
----
-apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-deployment
@@ -35,4 +20,34 @@ spec:
         image: limmx/webapp:latest
         ports:
         - containerPort: 8888
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: webapp
+  name: webapp-services
+  namespace: default
+spec:
+  ports:
+    - port: 8888
+      targetPort: 8888
+  selector:
+    k8s-app: webapp
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-pod
+  labels:
+    k8s-app: webapp
+
+spec:
+  containers:
+    - name: webapp
+      image: limmx/webapp
 ---
