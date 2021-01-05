@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: apps/v1
+metadata:
+  name: webapp-pod
+  labels:
+    k8s-app: webapp
+
+spec:
+  containers:
+    - name: webapp
+      image: limmx/webapp
