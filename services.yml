@@ -1,5 +1,5 @@
-kind: Service
 apiVersion: apps/v1
+kind: Service
 metadata:
   labels:
     k8s-app: webapp
