@@ -33,14 +33,5 @@ pipeline {
             }
         } 
     
-    stage('Deploy App') {
-      steps{
-	withKubeConfig([credentialsId: 'kubernetes_config', serverUrl: 'https://192.168.80.151:6443']){
-	        script {
-			sh "kubectl apply -f deployment.yml"
-		}
-	}
-     }
-  }
 }
 }
